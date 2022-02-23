@@ -166,7 +166,7 @@ void JSONLexer::lex()
                 }
                 else
                 {
-                    if (c == ',' || c == ']')
+                    if (c == ',' || c == ']' || c == '}')
                     {
                         addToken(valueType, tempValue);
                         expectingValue = false;
@@ -191,7 +191,7 @@ void JSONLexer::lex()
                     }
                 }
             }
-            if (c == ']')
+            if (c == ']' || c == '}')
             {
                 expectingValue = false;
                 i--;
@@ -246,7 +246,7 @@ void JSONLexer::lex()
 
 void JSONLexer::printTokens()
 {
-    std::cout << "_____________\nType\tValue\n_____________\n";
+    std::cout << "Type\tValue\n";
     for (int i = 0; i < finalTokens.size(); i++)
     {
         std::cout << finalTokens[i].first << '\t' << finalTokens[i].second << '\n';
